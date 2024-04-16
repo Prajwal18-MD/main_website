@@ -180,6 +180,40 @@ ScrollReveal({
     // reset: true ,
 });
 
+document.addEventListener("DOMContentLoaded", function() {
+    // Get references to the button, iframe, and close button
+    var chatBtn = document.getElementById("chat-btn");
+    var chatIframe = document.getElementById("chat-iframe");
+    var closeBtn = document.getElementById("close-btn");
+
+    // Add click event listener to the chat button
+    chatBtn.addEventListener("click", function(event) {
+        // Prevent default link behavior
+        event.preventDefault();
+
+        // Show the chat iframe
+        document.getElementById("chat-container").style.display = "block";
+
+        // Show the close button
+        closeBtn.style.display = "block";
+
+        // Set the source of the iframe to activate it
+        chatIframe.src = "https://console.dialogflow.com/api-client/demo/embedded/8b60466b-f3c8-480c-b1d8-70612cc85043";
+    });
+
+    // Add click event listener to the close button
+    closeBtn.addEventListener("click", function(event) {
+        // Hide the chat iframe when close button is clicked
+        document.getElementById("chat-container").style.display = "none";
+
+        // Hide the close button
+        closeBtn.style.display = "none";
+        
+        // Reset the iframe src to stop any ongoing processes
+        chatIframe.src = "";
+    });
+});
+
 
 ScrollReveal().reveal('.hero-info,.main-text,.proposal,.heading', { origin: "top" });
 ScrollReveal().reveal('.about-img,.fillter-buttons,.contact-info', { origin: "left" });
